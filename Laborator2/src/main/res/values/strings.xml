@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lab2</string>
+
+    <string name="text_buton">Press me!</string>
+    <string name="text_mesaj">This is lab2..</string>
+    <string name="text_hint_input">Enter name...</string>
+    <string name="text_modificat"> Text changed!</string>
+</resources>

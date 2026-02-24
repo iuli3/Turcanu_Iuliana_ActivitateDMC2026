@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab2</string>
+    <string name="text_buton">Apasa-ma!</string>
+    <string name="text_mesaj">Acesta este laboratorul2.</string>
+    <string name="text_hint_input">Introdu nume..</string>
+    <string name="text_modificat">Text modificat!</string>
+</resources>
