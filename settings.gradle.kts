@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Turcanu_Iuliana_ActivitateDMC2026"
 include(":Laborator2")
+include(":Laborator2:laborator3")
