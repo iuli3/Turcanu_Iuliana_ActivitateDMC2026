@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">laborator4</string>
+
+    <string name="titlu_adauga">Adauga Instrument Muzical</string>
+
+    <string name="label_nume">Nume instrument *</string>
+    <string name="hint_nume">Ex: Chitara clasica</string>
+
+    <string name="label_an">An fabricatie *</string>
+    <string name="hint_an">Ex: 2020</string>
+
+    <string name="label_pret">Pret (RON) *</string>
+    <string name="hint_pret">Ex: 1500.00</string>
+
+    <string name="label_disponibil">Instrument disponibil in stoc</string>
+
+    <string name="label_tip_sunet">Tip sunet</string>
+    <string name="rb_acustic">Acustic</string>
+    <string name="rb_electric">Electric</string>
+
+    <string name="label_categorie">Categorie instrument</string>
+
+    <string name="label_rating">Rating calitate</string>
+
+    <string name="label_oferta">Oferta speciala</string>
+    <string name="switch_oferta">Activati oferta</string>
+
+    <string name="label_vanzare">Disponibil pentru vanzare</string>
+    <string name="toggle_activ">ACTIV</string>
+    <string name="toggle_inactiv">INACTIV</string>
+
+    <string name="btn_salveaza">SALVEAZA INSTRUMENTUL</string>
+
+    //main
+    <string name="tv_denumire">Denumire: -</string>
+    <string name="tv_serie">Serie: -</string>
+    <string name="tv_pret">Pret: -</string>
+    <string name="tv_valid">Valid: -</string>
+    <string name="tv_stare">Stare: -</string>
+    <string name="tv_rating">Rating: -</string>
+    <string name="tv_tip_sunet">Tip sunet: -</string>
+    <string name="btn_adauga">+ Adauga Instrument</string>
+</resources>
