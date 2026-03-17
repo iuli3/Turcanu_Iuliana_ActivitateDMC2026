@@ -31,6 +31,8 @@
     <string name="toggle_inactiv">INACTIV</string>
 
     <string name="btn_salveaza">SALVEAZA INSTRUMENTUL</string>
+    <string name="label_data_achizitie">Data achizitie</string>
+    <string name="tv_data">Data: -</string>
 
     //main
     <string name="tv_denumire">Denumire: -</string>
