@@ -23,11 +23,15 @@ public class AdaugareInstrument extends AppCompatActivity {
 
     private EditText etNume, etSerie, etPret;
     private CheckBox cbEsteValid;
-    private RadioButton rbAcustic;
+    private RadioButton rbAcustic, rbElectric;
     private Spinner spinnerStare;
     private RatingBar ratingBar;
     private Button btnSalveaza;
     private DatePicker datePicker;
+    private SwitchCompat switchOferta;
+    private ToggleButton toggleVanzare;
+
+    private int pozitie = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +39,17 @@ public class AdaugareInstrument extends AppCompatActivity {
         setContentView(R.layout.activity_adaugare_instrument);
 
         etNume = findViewById(R.id.etNume);
-        etSerie= findViewById(R.id.etAnFabricatie);
-        etPret= findViewById(R.id.etPret);
-        cbEsteValid= findViewById(R.id.cbDisponibil);
-        rbAcustic= findViewById(R.id.rbAcustic);
-        spinnerStare= findViewById(R.id.spinnerCategorie);
-        ratingBar= findViewById(R.id.ratingBar);
-        btnSalveaza= findViewById(R.id.btnSalveaza);
+        etSerie = findViewById(R.id.etAnFabricatie);
+        etPret = findViewById(R.id.etPret);
+        cbEsteValid = findViewById(R.id.cbDisponibil);
+        rbAcustic = findViewById(R.id.rbAcustic);
+        rbElectric = findViewById(R.id.rbElectric);
+        spinnerStare = findViewById(R.id.spinnerCategorie);
+        ratingBar = findViewById(R.id.ratingBar);
+        btnSalveaza = findViewById(R.id.btnSalveaza);
         datePicker = findViewById(R.id.datePicker);
-
-        SwitchCompat switchOferta= findViewById(R.id.switchOferta);
-        ToggleButton toggleVanzare= findViewById(R.id.toggleVanzare);
+        switchOferta = findViewById(R.id.switchOferta);
+        toggleVanzare = findViewById(R.id.toggleVanzare);
 
         ArrayAdapter<InstrumentMuzical.StareInstrument> adapter = new ArrayAdapter<>(
                 this,
@@ -55,26 +59,42 @@ public class AdaugareInstrument extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerStare.setAdapter(adapter);
 
+        if (getIntent().hasExtra("instrument_edit")) {
+            InstrumentMuzical.InstrumentTehnic instrument = getIntent().getParcelableExtra("instrument_edit");
+            pozitie = getIntent().getIntExtra("pozitie", -1);
+
+            if (instrument != null) {
+                etNume.setText(instrument.denumire);
+                etSerie.setText(String.valueOf(instrument.serie));
+                etPret.setText(String.valueOf(instrument.pret));
+                cbEsteValid.setChecked(instrument.esteValid);
+                spinnerStare.setSelection(instrument.stare.ordinal());
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && instrument.dataAchizitie != null) {
+                    datePicker.updateDate(
+                            instrument.dataAchizitie.getYear(),
+                            instrument.dataAchizitie.getMonthValue() - 1,
+                            instrument.dataAchizitie.getDayOfMonth()
+                    );
+                }
+            }
+        }
+
         btnSalveaza.setOnClickListener(v -> {
             String denumire = etNume.getText().toString().trim();
             String serieStr = etSerie.getText().toString().trim();
-            String pretStr  = etPret.getText().toString().trim();
-
-            LocalDate dataAchizitie = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                dataAchizitie = LocalDate.of(
-                        datePicker.getYear(),
-                        datePicker.getMonth() + 1,  // luna e 0-indexed
-                        datePicker.getDayOfMonth()
-                );
-            }
+            String pretStr = etPret.getText().toString().trim();
 
             if (denumire.isEmpty() || serieStr.isEmpty() || pretStr.isEmpty()) {
-                Toast.makeText(this, "Completati toate campurile!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Completați toate câmpurile!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            //lab5
+            LocalDate dataAchizitie = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                dataAchizitie = LocalDate.of(datePicker.getYear(), datePicker.getMonth() + 1, datePicker.getDayOfMonth());
+            }
+
             InstrumentMuzical.InstrumentTehnic instrument = new InstrumentMuzical.InstrumentTehnic(
                     denumire,
                     Integer.parseInt(serieStr),
@@ -85,17 +105,8 @@ public class AdaugareInstrument extends AppCompatActivity {
             );
 
             Intent rezultat = new Intent();
-            rezultat.putExtra("denumire", instrument.denumire);
-            rezultat.putExtra("serie", instrument.serie);
-            rezultat.putExtra("pret", instrument.pret);
-            rezultat.putExtra("esteValid", instrument.esteValid);
-            rezultat.putExtra("stare", instrument.stare.toString());
-            rezultat.putExtra("dataAchizitie", instrument.dataAchizitie.toString());
-            rezultat.putExtra("rating", ratingBar.getRating());
-            rezultat.putExtra("tipSunet", rbAcustic.isChecked() ? "Acustic" : "Electric");
-            rezultat.putExtra("oferta", switchOferta.isChecked());
-            rezultat.putExtra("vanzare", toggleVanzare.isChecked());
-
+            rezultat.putExtra("instrument_key", instrument);
+            rezultat.putExtra("pozitie", pozitie);
 
             setResult(RESULT_OK, rezultat);
             finish();
