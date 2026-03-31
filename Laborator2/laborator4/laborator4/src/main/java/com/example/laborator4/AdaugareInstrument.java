@@ -1,6 +1,8 @@
 package com.example.laborator4;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.DatePicker;
@@ -17,6 +20,8 @@ import android.widget.DatePicker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class AdaugareInstrument extends AppCompatActivity {
@@ -30,6 +35,8 @@ public class AdaugareInstrument extends AppCompatActivity {
     private DatePicker datePicker;
     private SwitchCompat switchOferta;
     private ToggleButton toggleVanzare;
+    private TextView tvTitlu, tvLabelNume, tvLabelAn, tvLabelPret, tvLabelTipSunet,
+            tvLabelCategorie, tvLabelRating, tvLabelOferta, tvLabelVanzare, tvLabelData;
 
     private int pozitie = -1;
 
@@ -37,6 +44,17 @@ public class AdaugareInstrument extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adaugare_instrument);
+
+        tvTitlu = findViewById(R.id.tvTitlu);
+        tvLabelNume = findViewById(R.id.tvLabelNume);
+        tvLabelAn = findViewById(R.id.tvLabelAn);
+        tvLabelPret = findViewById(R.id.tvLabelPret);
+        tvLabelTipSunet = findViewById(R.id.tvLabelTipSunet);
+        tvLabelCategorie = findViewById(R.id.tvLabelCategorie);
+        tvLabelRating = findViewById(R.id.tvLabelRating);
+        tvLabelOferta = findViewById(R.id.tvLabelOferta);
+        tvLabelVanzare = findViewById(R.id.tvLabelVanzare);
+        tvLabelData = findViewById(R.id.tvLabelDataAchizitie);
 
         etNume = findViewById(R.id.etNume);
         etSerie = findViewById(R.id.etAnFabricatie);
@@ -104,12 +122,69 @@ public class AdaugareInstrument extends AppCompatActivity {
                     dataAchizitie
             );
 
+            if(pozitie == -1) {
+                salveazaInFisier(instrument);
+            }
+
             Intent rezultat = new Intent();
             rezultat.putExtra("instrument_key", instrument);
             rezultat.putExtra("pozitie", pozitie);
-
             setResult(RESULT_OK, rezultat);
             finish();
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        incarcaSetariPreferinte();
+    }
+
+    private void incarcaSetariPreferinte() {
+        SharedPreferences sp = getSharedPreferences("SetariApp", MODE_PRIVATE);
+        float marimeFont = sp.getFloat("font_size", 18);
+        String culoareFont = sp.getString("font_color", "Negru");
+
+        int colorInt;
+        switch (culoareFont) {
+            case "Rosu": colorInt = Color.RED; break;
+            case "Albastru": colorInt = Color.BLUE; break;
+            case "Verde": colorInt = Color.GREEN; break;
+            default: colorInt = Color.BLACK;
+        }
+
+        aplicaSizeSiCuloare(marimeFont, colorInt,
+                tvTitlu, tvLabelNume, tvLabelAn, tvLabelPret, tvLabelTipSunet,
+                tvLabelCategorie, tvLabelRating, tvLabelOferta, tvLabelVanzare, tvLabelData,
+                etNume, etSerie, etPret,
+                cbEsteValid, rbAcustic, rbElectric,
+                switchOferta, toggleVanzare, btnSalveaza);
+    }
+
+    private void aplicaSizeSiCuloare(float size, int color, TextView... views) {
+        for (TextView v : views) {
+            if (v != null) {
+                v.setTextSize(size);
+                v.setTextColor(color);
+
+                if (v instanceof EditText) {
+                    ((EditText) v).setHintTextColor(color);
+                }
+            }
+        }
+    }
+
+    private void salveazaInFisier(InstrumentMuzical.InstrumentTehnic instrument) {
+        String numeFisier = "instrumente.txt";
+        String linie = instrument.denumire + "," + instrument.serie + "," + instrument.pret
+                + "," + instrument.esteValid + "," + instrument.stare + "," + instrument.dataAchizitie
+                + "\n";
+        try (FileOutputStream fos = openFileOutput(numeFisier, MODE_APPEND)) {
+            fos.write(linie.getBytes());
+            Toast.makeText(this, "adaugat in fisier", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            android.util.Log.e("AdaugareInstrument", "eroare la salvarea in fisier", e);
+            Toast.makeText(this, "eroare la salvarea in fisier", Toast.LENGTH_SHORT).show();
+        }
     }
 }

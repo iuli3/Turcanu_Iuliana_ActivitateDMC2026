@@ -43,4 +43,5 @@
     <string name="tv_rating">Rating: -</string>
     <string name="tv_tip_sunet">Tip sunet: -</string>
     <string name="btn_adauga">+ Adauga Instrument</string>
+    <string name="btnSetari">Setari Font</string>
 </resources>

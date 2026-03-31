@@ -3,33 +3,44 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp">
-
-    <TextView
-        android:id="@+id/tvNumeItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#1A237E" />
+    android:padding="12dp"
+    android:background="@android:color/white"
+    android:layout_marginBottom="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <TextView
-            android:id="@+id/tvDetaliiItem"
+            android:id="@+id/tvNumeItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#555555" />
-
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E" />
         <TextView
             android:id="@+id/tvPretItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#2E7D32"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDetaliiItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#555555"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvStatusItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#D32F2F"
+        android:textSize="13sp"
+        android:textStyle="italic" />
+
 </LinearLayout>

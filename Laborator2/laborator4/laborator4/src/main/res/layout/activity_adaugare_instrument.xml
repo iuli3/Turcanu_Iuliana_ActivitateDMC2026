@@ -23,6 +23,7 @@
             android:layout_marginBottom="20dp"/>
 
         <TextView
+            android:id="@+id/tvLabelNume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_nume"
@@ -35,16 +36,15 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_nume"
             android:inputType="textCapSentences"
-            android:autofillHints="name"
             android:background="@android:color/white"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
         <TextView
+            android:id="@+id/tvLabelAn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_an"
-            android:textColor="#333333"
             android:textSize="14sp"
             android:layout_marginBottom="4dp"/>
 
@@ -54,16 +54,15 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_an"
             android:inputType="number"
-            android:autofillHints="no"
             android:background="@android:color/white"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
         <TextView
+            android:id="@+id/tvLabelPret"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_pret"
-            android:textColor="#333333"
             android:textSize="14sp"
             android:layout_marginBottom="4dp"/>
 
@@ -73,7 +72,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_pret"
             android:inputType="numberDecimal"
-            android:autofillHints="no"
             android:background="@android:color/white"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
@@ -84,14 +82,13 @@
             android:layout_height="wrap_content"
             android:text="@string/label_disponibil"
             android:textSize="15sp"
-            android:textColor="#333333"
             android:layout_marginBottom="16dp"/>
 
         <TextView
+            android:id="@+id/tvLabelTipSunet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_tip_sunet"
-            android:textColor="#333333"
             android:textSize="14sp"
             android:layout_marginBottom="4dp"/>
 
@@ -115,14 +112,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rb_electric"/>
-
         </RadioGroup>
 
         <TextView
+            android:id="@+id/tvLabelCategorie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_categorie"
-            android:textColor="#333333"
             android:textSize="14sp"
             android:layout_marginBottom="4dp"/>
 
@@ -135,10 +131,10 @@
             android:layout_marginBottom="16dp"/>
 
         <TextView
+            android:id="@+id/tvLabelRating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_rating"
-            android:textColor="#333333"
             android:textSize="15sp"
             android:layout_marginBottom="4dp"/>
 
@@ -152,10 +148,10 @@
             android:layout_marginBottom="17dp"/>
 
         <TextView
+            android:id="@+id/tvLabelOferta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_oferta"
-            android:textColor="#333333"
             android:textSize="14sp"
             android:layout_marginBottom="4dp"/>
 
@@ -168,10 +164,10 @@
             android:layout_marginBottom="16dp"/>
 
         <TextView
+            android:id="@+id/tvLabelVanzare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_vanzare"
-            android:textColor="#333333"
             android:textSize="16sp"
             android:layout_marginBottom="4dp"/>
 
@@ -184,10 +180,10 @@
             android:layout_marginBottom="32dp"/>
 
         <TextView
+            android:id="@+id/tvLabelDataAchizitie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_data_achizitie"
-            android:textColor="#333333"
             android:textSize="14sp"
             android:layout_marginBottom="4dp"/>
 

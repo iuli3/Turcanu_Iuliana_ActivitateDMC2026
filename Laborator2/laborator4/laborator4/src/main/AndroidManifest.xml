@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Turcanu_Iuliana_ActivitateDMC2026">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdaugareInstrument"
             android:exported="false" />
         <activity
