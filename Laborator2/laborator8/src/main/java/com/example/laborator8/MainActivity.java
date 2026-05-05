@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseHelper dbHelper;
+    private PhoneDao phoneDao;
     private EditText etBrand, etModel, etPrice, etSearchBrand, etMinPrice, etMaxPrice, etDeleteModel, etUpdateLetter;
     private ListView listView;
 
@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        dbHelper = new DatabaseHelper(this);
+        // Initializam Room Database si obtinem DAO-ul
+        phoneDao = AppDatabase.getDatabase(this).phoneDao();
 
         etBrand = findViewById(R.id.etBrand);
         etModel = findViewById(R.id.etModel);
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnDelete = findViewById(R.id.btnDelete);
         Button btnUpdate = findViewById(R.id.btnUpdate);
 
+        // Inserare telefon cu Room
         btnInsert.setOnClickListener(v -> {
             String brand = etBrand.getText().toString();
             String model = etModel.getText().toString();
@@ -59,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
             if (!brand.isEmpty() && !model.isEmpty() && !priceStr.isEmpty()) {
                 double price = Double.parseDouble(priceStr);
                 Phone phone = new Phone(brand, model, price);
-                dbHelper.insertPhone(phone);
-                Toast.makeText(this, "Phone Saved!", Toast.LENGTH_SHORT).show();
+                phoneDao.insertPhone(phone);
+                Toast.makeText(this, "Phone Saved (Room)!", Toast.LENGTH_SHORT).show();
                 etBrand.setText("");
                 etModel.setText("");
                 etPrice.setText("");
@@ -70,39 +72,43 @@ public class MainActivity extends AppCompatActivity {
 
         btnShowAll.setOnClickListener(v -> showAll());
 
+        // Search by brand cu Room
         btnSearchBrand.setOnClickListener(v -> {
             String brand = etSearchBrand.getText().toString();
             if (!brand.isEmpty()) {
-                List<Phone> phones = dbHelper.getPhonesByBrand(brand);
+                List<Phone> phones = phoneDao.getPhonesByBrand(brand);
                 updateListView(phones);
             }
         });
 
+        // Filtreaza by price range cu Room
         btnFilterRange.setOnClickListener(v -> {
             String minStr = etMinPrice.getText().toString();
             String maxStr = etMaxPrice.getText().toString();
             if (!minStr.isEmpty() && !maxStr.isEmpty()) {
                 double min = Double.parseDouble(minStr);
                 double max = Double.parseDouble(maxStr);
-                List<Phone> phones = dbHelper.getPhonesInRange(min, max);
+                List<Phone> phones = phoneDao.getPhonesInRange(min, max);
                 updateListView(phones);
             }
         });
 
+        // Sterge tel cu Room
         btnDelete.setOnClickListener(v -> {
             String model = etDeleteModel.getText().toString();
             if (!model.isEmpty()) {
-                dbHelper.deletePhoneByModel(model);
+                phoneDao.deletePhoneByModel(model);
                 Toast.makeText(this, "Model deleted!", Toast.LENGTH_SHORT).show();
                 etDeleteModel.setText("");
                 showAll();
             }
         });
 
+        // Incrementeaza pret dupa litera numelui cu Room
         btnUpdate.setOnClickListener(v -> {
             String letter = etUpdateLetter.getText().toString();
             if (!letter.isEmpty()) {
-                dbHelper.incrementPriceForBrandsStartingWith(letter);
+                phoneDao.incrementPriceForBrandsStartingWith(letter);
                 showAll();
             }
         });
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAll() {
-        List<Phone> phones = dbHelper.getAllPhones();
+        List<Phone> phones = phoneDao.getAllPhones();
         updateListView(phones);
     }
 

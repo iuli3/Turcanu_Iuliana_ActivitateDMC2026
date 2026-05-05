@@ -1,8 +1,12 @@
 package com.example.laborator8;
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "phones")
 public class Phone {
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String brand;
     private String model;

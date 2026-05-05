@@ -23,6 +23,9 @@
       <SelectionState runConfigName="Laborator2.laborator9">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="Laborator2.laborator10">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
