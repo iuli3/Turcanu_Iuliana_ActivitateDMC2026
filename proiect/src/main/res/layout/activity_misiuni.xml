@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F4F8">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Misiuni de Monitorizare"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#1565C0"
+        android:padding="16dp"
+        android:background="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnAdaugaMisiune"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+ Adauga Misiune"
+        android:backgroundTint="#1976D2"
+        android:textColor="@android:color/white"
+        android:layout_margin="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apasati lung pe un element pentru a-l sterge"
+        android:textSize="12sp"
+        android:textColor="#90A4AE"
+        android:paddingStart="16dp"
+        android:layout_marginBottom="4dp" />
+
+    <ListView
+        android:id="@+id/lvMisiuni"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="#CFD8DC"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

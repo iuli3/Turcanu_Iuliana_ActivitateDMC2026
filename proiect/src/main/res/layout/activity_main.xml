@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- App title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:gravity="center"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sistem de Management Camere de Supraveghere"
+            android:textSize="12sp"
+            android:textColor="#78909C"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Welcome banner -->
+        <TextView
+            android:id="@+id/tvBunVenit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autentificati-va pentru a continua"
+            android:textSize="15sp"
+            android:textColor="#37474F"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Operator settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Operator:"
+            android:textSize="13sp"
+            android:textColor="#546E7A"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etUtilizator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduceti numele operatorului..."
+            android:inputType="text"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Notificari alerte"
+                android:textSize="14sp"
+                android:textColor="#37474F" />
+
+            <Switch
+                android:id="@+id/swNotificari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSalveazaSetari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salveaza Setarile"
+            android:backgroundTint="#1565C0"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Navigation section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Navigare"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#37474F"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnMisiuni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Misiuni de Monitorizare"
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnHarta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Harta Camere"
+            android:backgroundTint="#388E3C"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnStatistici"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Statistici"
+            android:backgroundTint="#F57C00"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</ScrollView>

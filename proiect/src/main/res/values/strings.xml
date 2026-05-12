@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">DroneWatch</string>
+
+    <!-- MainActivity -->
+    <string name="bun_venit">Autentificati-va pentru a continua</string>
+    <string name="label_utilizator">Operator</string>
+    <string name="hint_utilizator">Introduceti numele operatorului...</string>
+    <string name="label_notificari">Notificari alerte</string>
+    <string name="btn_salveaza_setari">Salveaza Setarile</string>
+    <string name="titlu_navigare">Navigare</string>
+    <string name="btn_misiuni">Misiuni de Monitorizare</string>
+    <string name="btn_harta">Harta Camere</string>
+    <string name="btn_statistici">Statistici</string>
+
+    <!-- MisiuniActivity -->
+    <string name="titlu_misiuni">Misiuni de Monitorizare</string>
+    <string name="btn_adauga_misiune">+ Adauga Misiune</string>
+    <string name="info_stergere_misiune">Apasati lung pentru a sterge</string>
+
+    <!-- AdaugareMisiuneActivity -->
+    <string name="titlu_adaugare_misiune">Adaugare Misiune Noua</string>
+    <string name="label_nume_misiune">Nume misiune:</string>
+    <string name="label_tip_zona">Tip zona:</string>
+    <string name="label_prioritate">Prioritate (1–5 stele):</string>
+    <string name="label_interval">Interval orar:</string>
+    <string name="label_activ_misiune">Misiune activa:</string>
+    <string name="btn_salveaza_misiune">Salveaza Misiunea</string>
+    <string name="data_neselectata_misiune">Nicio data selectata</string>
+
+    <!-- HartaActivity -->
+    <string name="titlu_harta">Harta Camere de Supraveghere</string>
+
+    <!-- StatisticiActivity -->
+    <string name="titlu_statistici">Statistici Misiuni</string>
+
+    <!-- CameraStreamActivity -->
+    <string name="titlu_stream">Stream Camera</string>
+
+    <!-- Legacy strings (kept for old activities) -->
+    <string name="titlu_detectii">Detectii Inregistrate</string>
+    <string name="btn_adauga">+ Adauga Detectie</string>
+    <string name="info_stergere">Apasati lung pe un element pentru a-l sterge</string>
+    <string name="titlu_adaugare">Adaugare Detectie Noua</string>
+    <string name="label_camera">Camera:</string>
+    <string name="label_locatie">Locatie:</string>
+    <string name="hint_locatie">ex: Intrare principala</string>
+    <string name="label_persoane">Numar persoane detectate:</string>
+    <string name="hint_persoane">ex: 5</string>
+    <string name="btn_selecteaza_data">Selecteaza Data</string>
+    <string name="data_neselectata">Nicio data selectata</string>
+    <string name="label_confidenta">Nivel de confidenta:</string>
+    <string name="label_alerta">Genereaza alerta</string>
+    <string name="label_activ">Detectie activa</string>
+    <string name="btn_salveaza">Salveaza Detectia</string>
+    <string name="titlu_video_feed">Feed-uri Camere Active</string>
+    <string name="btn_detectii">Detectii</string>
+    <string name="btn_video_feed">Feed-uri Video</string>
+</resources>

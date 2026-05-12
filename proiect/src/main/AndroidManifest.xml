@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Turcanu_Iuliana_ActivitateDMC2026">
+
+        <!-- Replace YOUR_MAPS_API_KEY with your key from Google Cloud Console -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBbFSxWfTZhtrB-vNZmTKUlgq_44XVUbX0" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- New activities -->
+        <activity android:name=".MisiuniActivity" />
+        <activity android:name=".AdaugareMisiuneActivity" />
+
+        <!-- Existing activities (kept) -->
+        <activity android:name=".HartaActivity" />
+        <activity android:name=".StatisticiActivity" />
+        <activity
+            android:name=".CameraStreamActivity"
+            android:hardwareAccelerated="true" />
+
+        <!-- Legacy activities (not launched from main UI) -->
+        <activity android:name=".DetectiiActivity" />
+        <activity android:name=".AdaugareDetectieActivity" />
+        <activity android:name=".VideoFeedActivity" />
+
+    </application>
+
+</manifest>

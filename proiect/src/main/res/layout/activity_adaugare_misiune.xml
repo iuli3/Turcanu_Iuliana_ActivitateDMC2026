@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adaugare Misiune Noua"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Nume misiune -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nume misiune:"
+            android:textSize="13sp"
+            android:textColor="#546E7A"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etNumeMisiune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ex: Monitorizare Piata Universitatii"
+            android:inputType="text"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tip zona + loading indicator -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tip zona:"
+                android:textSize="13sp"
+                android:textColor="#546E7A" />
+
+            <ProgressBar
+                android:id="@+id/pbZone"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinnerZona"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Prioritate -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prioritate (1–5 stele):"
+            android:textSize="13sp"
+            android:textColor="#546E7A"
+            android:layout_marginBottom="4dp" />
+
+        <RatingBar
+            android:id="@+id/ratingPrioritate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="3"
+            android:stepSize="1"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Data -->
+        <Button
+            android:id="@+id/btnSelecteazaDataMisiune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecteaza Data"
+            android:backgroundTint="#546E7A"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvDataSelectataMisiune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nicio data selectata"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="#78909C"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Interval orar -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Interval orar:"
+            android:textSize="13sp"
+            android:textColor="#546E7A"
+            android:layout_marginBottom="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/etOraStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="08:00"
+                android:inputType="time"
+                android:background="@android:color/white"
+                android:padding="12dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="–"
+                android:textSize="22sp"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="8dp" />
+
+            <EditText
+                android:id="@+id/etOraStop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="16:00"
+                android:inputType="time"
+                android:background="@android:color/white"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Activ/Inactiv switch -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Misiune activa:"
+                android:textSize="14sp"
+                android:textColor="#37474F" />
+
+            <Switch
+                android:id="@+id/swActivMisiune"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSalveazaMisiune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salveaza Misiunea"
+            android:backgroundTint="#1565C0"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</ScrollView>

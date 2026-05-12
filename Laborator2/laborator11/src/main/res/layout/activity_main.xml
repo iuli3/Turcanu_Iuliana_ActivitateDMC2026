@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F4F8">
+
+    <!-- Input card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adauga valoare:"
+            android:textSize="13sp"
+            android:textColor="#546E7A"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/etEticheta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Eticheta"
+                android:inputType="text"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_marginEnd="8dp" />
+
+            <EditText
+                android:id="@+id/etValoare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Valoare"
+                android:inputType="numberDecimal"
+                android:background="@android:color/white"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAdauga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ Adauga"
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tip grafic:"
+                android:textSize="14sp"
+                android:textColor="#37474F"
+                android:layout_marginEnd="12dp" />
+
+            <Spinner
+                android:id="@+id/spinnerTip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Values list (expands to fill remaining space) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valori adaugate:  (apasati lung pentru a sterge)"
+            android:textSize="12sp"
+            android:textColor="#90A4AE"
+            android:padding="12dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ECEFF1" />
+
+        <ListView
+            android:id="@+id/lvValori"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="#ECEFF1"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+
+    <!-- Action button -->
+    <Button
+        android:id="@+id/btnAfiseaza"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Afiseaza Grafic  →"
+        android:backgroundTint="#1565C0"
+        android:textColor="@android:color/white"
+        android:layout_margin="8dp" />
+
+</LinearLayout>
