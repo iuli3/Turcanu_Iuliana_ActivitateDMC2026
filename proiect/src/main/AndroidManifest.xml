@@ -11,13 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Turcanu_Iuliana_ActivitateDMC2026">
 
-        <!-- Replace YOUR_MAPS_API_KEY with your key from Google Cloud Console -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBbFSxWfTZhtrB-vNZmTKUlgq_44XVUbX0" />
+            android:value="MAPS_KEY" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,21 +24,30 @@
             </intent-filter>
         </activity>
 
-        <!-- New activities -->
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
+
+        <!-- Misiuni -->
         <activity android:name=".MisiuniActivity" />
         <activity android:name=".AdaugareMisiuneActivity" />
+        <activity android:name=".CalendarMisiuniActivity" />
 
-        <!-- Existing activities (kept) -->
+        <!-- Harta + Stream -->
         <activity android:name=".HartaActivity" />
-        <activity android:name=".StatisticiActivity" />
         <activity
             android:name=".CameraStreamActivity"
             android:hardwareAccelerated="true" />
 
-        <!-- Legacy activities (not launched from main UI) -->
-        <activity android:name=".DetectiiActivity" />
-        <activity android:name=".AdaugareDetectieActivity" />
-        <activity android:name=".VideoFeedActivity" />
+        <!-- Statistici -->
+        <activity android:name=".StatisticiActivity" />
+
+        <!-- Monitorizare si Rapoarte -->
+        <activity android:name=".AlerteActiveActivity" />
+        <activity android:name=".RaportZilnicActivity" />
+        <activity android:name=".ProfilOperatorActivity" />
+        <activity android:name=".LogActivitateActivity" />
+        <activity android:name=".SetariAvansateActivity" />
+
 
     </application>
 

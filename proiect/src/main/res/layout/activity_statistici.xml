@@ -1,52 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F0F4F8"
-    android:padding="16dp">
+    android:background="#F0F4F8">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titlu_statistici"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#1565C0"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvTotalDetectii"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total detectii: 0"
-        android:textSize="16sp"
-        android:textColor="#37474F"
-        android:layout_marginBottom="4dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Statistici"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:layout_marginBottom="12dp" />
 
-    <TextView
-        android:id="@+id/tvTotalPersoane"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total persoane detectate: 0"
-        android:textSize="16sp"
-        android:textColor="#37474F"
-        android:layout_marginBottom="4dp" />
+        <!-- MISIUNI -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MISIUNI"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#90A4AE"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="4dp" />
 
-    <TextView
-        android:id="@+id/tvTotalAlerte"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total alerte: 0"
-        android:textSize="16sp"
-        android:textColor="#C62828"
-        android:layout_marginBottom="16dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white">
 
-    <com.example.proiect.StatisticiView
-        android:id="@+id/graficDetectii"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/white" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-</LinearLayout>
+                <TextView
+                    android:id="@+id/tvMisiuniTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total: 0"
+                    android:textSize="15sp"
+                    android:textColor="#37474F"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tvMisiuniActive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Active: 0"
+                    android:textSize="15sp"
+                    android:textColor="#2E7D32"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tvMisiuniInactive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Inactive: 0"
+                    android:textSize="15sp"
+                    android:textColor="#C62828" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CAMERE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CAMERE"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#90A4AE"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="4dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvCamereTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total: 0"
+                    android:textSize="15sp"
+                    android:textColor="#37474F"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tvCamereActive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Active (live): 0"
+                    android:textSize="15sp"
+                    android:textColor="#2E7D32" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ALERTE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ALERTE"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#90A4AE"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="4dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvAlerteTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total evenimente: 0"
+                    android:textSize="15sp"
+                    android:textColor="#37474F"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tvAlerteActive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alerte active: 0"
+                    android:textSize="15sp"
+                    android:textColor="#C62828" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- GRAFICE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GRAFICE"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#90A4AE"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="4dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <com.example.proiect.StatisticiView
+                android:id="@+id/graficZone"
+                android:layout_width="match_parent"
+                android:layout_height="210dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <com.example.proiect.StatisticiView
+                android:id="@+id/graficAlerte"
+                android:layout_width="match_parent"
+                android:layout_height="210dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

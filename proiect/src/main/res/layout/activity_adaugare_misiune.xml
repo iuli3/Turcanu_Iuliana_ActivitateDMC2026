@@ -67,6 +67,22 @@
             android:layout_height="wrap_content"
             android:background="@android:color/white"
             android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/tvRisc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Risc: -"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvDescriereZona"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#666666"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp"/>
 
         <!-- Prioritate -->
         <TextView
@@ -173,6 +189,22 @@
                 android:layout_height="wrap_content"
                 android:checked="true" />
         </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/cbAlertaAuto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alerta automata la detectie"
+            android:textColor="#37474F"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/cbRecurenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Misiune recurenta (repetare saptamanala)"
+            android:textColor="#37474F"
+            android:layout_marginBottom="24dp" />
 
         <Button
             android:id="@+id/btnSalveazaMisiune"

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.CheckBox;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +26,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -34,11 +34,14 @@ import java.util.concurrent.Executors;
 public class AdaugareMisiuneActivity extends AppCompatActivity {
 
     private static final String JSON_URL =
-            "https://raw.githubusercontent.com/turcanuiuliana/dronewatch-data/main/zone.json";
+            "https://raw.githubusercontent.com/iuli3/dw-data/main/text.json";
 
     private String dataSelectata = "";
     private Spinner spinnerZona;
     private ProgressBar pbZone;
+    private TextView tvRisc;
+    private TextView tvDescriereZona;
+    private List<TipZona> listaZone = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +50,41 @@ public class AdaugareMisiuneActivity extends AppCompatActivity {
 
         spinnerZona = findViewById(R.id.spinnerZona);
         pbZone = findViewById(R.id.pbZone);
+        tvRisc = findViewById(R.id.tvRisc);
+        tvDescriereZona = findViewById(R.id.tvDescriereZona);
         EditText etNume = findViewById(R.id.etNumeMisiune);
         EditText etOraStart = findViewById(R.id.etOraStart);
         EditText etOraStop = findViewById(R.id.etOraStop);
         Switch swActiv = findViewById(R.id.swActivMisiune);
+        CheckBox cbAlertaAuto = findViewById(R.id.cbAlertaAuto);
+        CheckBox cbRecurenta = findViewById(R.id.cbRecurenta);
         RatingBar ratingPrioritate = findViewById(R.id.ratingPrioritate);
         Button btnData = findViewById(R.id.btnSelecteazaDataMisiune);
         TextView tvData = findViewById(R.id.tvDataSelectataMisiune);
         Button btnSalveaza = findViewById(R.id.btnSalveazaMisiune);
 
         incarcaTipuriZone();
+
+        spinnerZona.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
+                if (!listaZone.isEmpty() && position < listaZone.size()) {
+                    TipZona zona = listaZone.get(position);
+                    tvRisc.setText("Risc: " + zona.risc);
+                    tvDescriereZona.setText(zona.descriere);
+
+                    int culoare;
+                    switch (zona.risc) {
+                        case "ridicat": culoare = 0xFFE53935; break;
+                        case "mediu":   culoare = 0xFFFB8C00; break;
+                        default:        culoare = 0xFF43A047; break;
+                    }
+                    tvRisc.setTextColor(culoare);
+                }
+            }
+            @Override
+            public void onNothingSelected(android.widget.AdapterView<?> parent) {}
+        });
 
         btnData.setOnClickListener(v -> {
             Calendar cal = Calendar.getInstance();
@@ -93,9 +121,13 @@ public class AdaugareMisiuneActivity extends AppCompatActivity {
             m.oraStart = oraStart;
             m.oraStop = oraStop;
             m.activ = swActiv.isChecked();
+            m.alertaAuto = cbAlertaAuto.isChecked();
+            m.recurenta = cbRecurenta.isChecked();
             m.prioritate = ratingPrioritate.getRating();
 
-            new DatabaseHelper(this).adaugaMisiune(m);
+            DatabaseHelper dbHelper = new DatabaseHelper(this);
+            dbHelper.adaugaMisiune(m);
+            dbHelper.adaugaLog("Misiune adaugata", m.nume + " — " + m.tipZona);
             Toast.makeText(this, "Misiune salvata!", Toast.LENGTH_SHORT).show();
             setResult(RESULT_OK);
             finish();
@@ -107,17 +139,18 @@ public class AdaugareMisiuneActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
-            List<String> tipuri = fetchTipuriZone();
+            List<TipZona> zone = fetchTipuriZone();
             handler.post(() -> {
                 pbZone.setVisibility(View.GONE);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                        android.R.layout.simple_spinner_dropdown_item, tipuri);
+                listaZone = zone;
+                ArrayAdapter<TipZona> adapter = new ArrayAdapter<>(this,
+                        android.R.layout.simple_spinner_dropdown_item, listaZone);
                 spinnerZona.setAdapter(adapter);
             });
         });
     }
 
-    private List<String> fetchTipuriZone() {
+    private List<TipZona> fetchTipuriZone() {
         try {
             URL url = new URL(JSON_URL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -137,13 +170,18 @@ public class AdaugareMisiuneActivity extends AppCompatActivity {
         return fallbackTipuri();
     }
 
-    private List<String> parseZoneJson(String json) {
-        List<String> tipuri = new ArrayList<>();
+    private List<TipZona> parseZoneJson(String json) {
+        List<TipZona> tipuri = new ArrayList<>();
         try {
             JSONObject obj = new JSONObject(json);
             JSONArray zone = obj.getJSONArray("zone");
             for (int i = 0; i < zone.length(); i++) {
-                tipuri.add(zone.getJSONObject(i).getString("tip"));
+                JSONObject z = zone.getJSONObject(i);
+                tipuri.add(new TipZona(
+                        z.getString("tip"),
+                        z.getString("risc"),
+                        z.getString("descriere")
+                ));
             }
         } catch (Exception e) {
             return fallbackTipuri();
@@ -151,14 +189,14 @@ public class AdaugareMisiuneActivity extends AppCompatActivity {
         return tipuri.isEmpty() ? fallbackTipuri() : tipuri;
     }
 
-    private List<String> fallbackTipuri() {
-        return new ArrayList<>(Arrays.asList(
-                "Piata publica",
-                "Perimetru industrial",
-                "Zona rezidentiala",
-                "Intersectie rutiera",
-                "Parc public",
-                "Cladire institutionala"
-        ));
+    private List<TipZona> fallbackTipuri() {
+        List<TipZona> list = new ArrayList<>();
+        list.add(new TipZona("Perimetru militar", "ridicat", "Zone restrictionate, acces controlat strict"));
+        list.add(new TipZona("Aeroport", "ridicat", "Infrastructura critica, monitorizare intensiva"));
+        list.add(new TipZona("Port fluvial", "mediu", "Zona de tranzit marfuri si persoane"));
+        list.add(new TipZona("Stadion", "mediu", "Evenimente cu aglomerare mare de persoane"));
+        list.add(new TipZona("Gara", "mediu", "Nod de transport, flux continuu de calatori"));
+        list.add(new TipZona("Depozit logistic", "scazut", "Zone industriale de stocare si distributie"));
+        return list;
     }
 }

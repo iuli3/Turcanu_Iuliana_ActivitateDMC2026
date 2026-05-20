@@ -10,43 +10,39 @@ public class CameraInfo {
     public String location;
     public boolean active;
     public LatLng position;
-    public int persoanAzi;
-    public String oraDeParf;
-    public int[] ultimele8Ore;
     public String streamUrl;
+    public int dbId = -1;
 
     public CameraInfo(String id, String name, String location, boolean active,
-                      LatLng position, int persoanAzi, String oraDeParf,
-                      int[] ultimele8Ore, String streamUrl) {
+                      LatLng position, String streamUrl) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.active = active;
         this.position = position;
-        this.persoanAzi = persoanAzi;
-        this.oraDeParf = oraDeParf;
-        this.ultimele8Ore = ultimele8Ore;
         this.streamUrl = streamUrl;
     }
 
     public static List<CameraInfo> getCamere() {
         return Arrays.asList(
-            new CameraInfo("CAM-01", "Intrare Principala", "Sector Nord, Poarta A",
-                true, new LatLng(44.4638, 26.1106), 45, "09:00",
-                new int[]{3, 8, 15, 12, 5, 2, 0, 0},
-                "https://www.youtube.com/embed/rnXIjl_Rzy4"),
-            new CameraInfo("CAM-02", "Flancul Stang", "Sector Vest, Perimetru",
-                true, new LatLng(44.4628, 26.1126), 23, "14:00",
-                new int[]{0, 2, 3, 5, 8, 5, 0, 0},
-                "https://www.youtube.com/embed/83VPsAPWiME"),
-            new CameraInfo("CAM-03", "Iesire Spate", "Sector Sud, Poarta B",
-                false, new LatLng(44.4618, 26.1106), 0, "—",
-                new int[]{0, 0, 0, 0, 0, 0, 0, 0},
-                ""),
-            new CameraInfo("CAM-04", "Flancul Drept", "Sector Est, Perimetru",
-                true, new LatLng(44.4628, 26.1086), 31, "11:00",
-                new int[]{0, 5, 10, 12, 3, 1, 0, 0},
-                "https://www.youtube.com/embed/wUQc3RoLAPs")
+            new CameraInfo("CAM-01", "Piata Romana", "Piata Romana, Bucuresti",
+                true, new LatLng(44.4479, 26.0971),
+                "https://webcamromania.ro/webcam-orase/webcam-piata-romana-bucuresti/"),
+            new CameraInfo("CAM-02", "Piata Sfatului", "Piata Sfatului, Brasov",
+                true, new LatLng(45.6428, 25.5887),
+                "https://webcamromania.ro/webcam-orase/webcam-brasov/"),
+            new CameraInfo("CAM-03", "Piata Unirii", "Piata Unirii, Cluj-Napoca",
+                true, new LatLng(46.7699, 23.5899),
+                "https://webcamromania.ro/webcam-orase/webcam-cluj-napoca/"),
+            new CameraInfo("CAM-04", "Centru Suceava", "Centru, Suceava",
+                true, new LatLng(47.6515, 26.2573),
+                "https://webcamromania.ro/webcam-orase/webcam-suceava-centru/"),
+            new CameraInfo("CAM-05", "Gura Humorului", "Centru, Gura Humorului",
+                true, new LatLng(47.5519, 25.8889),
+                "https://webcamromania.ro/webcam-orase/webcam-gura-humorului/"),
+            new CameraInfo("CAM-06", "Centru Slobozia", "Centru, Slobozia",
+                false, new LatLng(44.5625, 27.3683),
+                "https://webcamromania.ro/webcam-orase/webcam-slobozia/")
         );
     }
 }

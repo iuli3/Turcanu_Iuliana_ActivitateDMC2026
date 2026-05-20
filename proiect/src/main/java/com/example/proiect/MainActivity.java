@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         Button btnMisiuni = findViewById(R.id.btnMisiuni);
         Button btnHarta = findViewById(R.id.btnHarta);
         Button btnStatistici = findViewById(R.id.btnStatistici);
+        Button btnAlerteActive = findViewById(R.id.btnAlerteActive);
+        Button btnRaportZilnic = findViewById(R.id.btnRaportZilnic);
+        Button btnProfilOperator = findViewById(R.id.btnProfilOperator);
+        Button btnLogActivitate = findViewById(R.id.btnLogActivitate);
+        Button btnSetariAvansate = findViewById(R.id.btnSetariAvansate);
         TextView tvBunVenit = findViewById(R.id.tvBunVenit);
 
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
@@ -60,5 +65,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, HartaActivity.class)));
         btnStatistici.setOnClickListener(v ->
                 startActivity(new Intent(this, StatisticiActivity.class)));
+        btnAlerteActive.setOnClickListener(v ->
+                startActivity(new Intent(this, AlerteActiveActivity.class)));
+        btnRaportZilnic.setOnClickListener(v ->
+                startActivity(new Intent(this, RaportZilnicActivity.class)));
+        btnProfilOperator.setOnClickListener(v ->
+                startActivity(new Intent(this, ProfilOperatorActivity.class)));
+        btnLogActivitate.setOnClickListener(v ->
+                startActivity(new Intent(this, LogActivitateActivity.class)));
+        btnSetariAvansate.setOnClickListener(v ->
+                startActivity(new Intent(this, SetariAvansateActivity.class)));
     }
 }

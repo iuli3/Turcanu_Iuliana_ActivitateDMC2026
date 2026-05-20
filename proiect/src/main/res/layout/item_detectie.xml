@@ -50,13 +50,6 @@
             android:textSize="12sp"
             android:textColor="#90A4AE" />
 
-        <TextView
-            android:id="@+id/tvPersoane"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#1976D2"
-            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

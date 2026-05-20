@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DroneWatch</string>
+    <string name="app_name">Supraveghere</string>
 
     <!-- MainActivity -->
     <string name="bun_venit">Autentificati-va pentru a continua</string>

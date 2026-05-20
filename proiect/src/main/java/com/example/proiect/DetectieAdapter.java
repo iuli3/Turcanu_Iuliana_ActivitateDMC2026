@@ -26,13 +26,11 @@ public class DetectieAdapter extends ArrayAdapter<Detectie> {
         TextView tvCamera = convertView.findViewById(R.id.tvCamera);
         TextView tvLocatie = convertView.findViewById(R.id.tvLocatie);
         TextView tvData = convertView.findViewById(R.id.tvData);
-        TextView tvPersoane = convertView.findViewById(R.id.tvPersoane);
         TextView tvAlerta = convertView.findViewById(R.id.tvAlerta);
 
         tvCamera.setText(d.camera);
         tvLocatie.setText(d.locatie);
         tvData.setText(d.data);
-        tvPersoane.setText(d.persoane + " persoane");
 
         if (d.alerta) {
             tvAlerta.setText("ALERTA");

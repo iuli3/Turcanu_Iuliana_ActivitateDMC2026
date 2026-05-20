@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/titlu_harta"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#1565C0"
-        android:padding="16dp"
-        android:background="@android:color/white" />
+    android:layout_height="match_parent">
 
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent" />
 
-</LinearLayout>
+    <!-- Hint band la top -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apasati lung pe harta pentru a adauga o camera"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:background="#CC1565C0"
+        android:padding="8dp"
+        android:layout_gravity="top" />
+
+    <!-- FAB adauga camera -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdaugaCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:src="@android:drawable/ic_input_add"
+        android:contentDescription="Adauga camera"
+        app:backgroundTint="#1565C0"
+        app:tint="@android:color/white"
+        app:fabSize="normal" />
+
+</FrameLayout>

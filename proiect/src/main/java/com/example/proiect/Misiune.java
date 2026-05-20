@@ -9,4 +9,6 @@ public class Misiune {
     public String oraStop;
     public boolean activ;
     public float prioritate;
+    public boolean alertaAuto;
+    public boolean recurenta;
 }

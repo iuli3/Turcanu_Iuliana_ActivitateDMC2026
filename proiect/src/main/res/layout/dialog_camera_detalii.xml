@@ -51,37 +51,37 @@
         android:textColor="#546E7A"
         android:layout_marginBottom="14dp" />
 
-    <!-- Divider -->
+    <!-- Vreme -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#ECEFF1"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginBottom="10dp" />
 
-    <!-- Stats -->
-    <TextView
-        android:id="@+id/tvCameraPersoane"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#37474F"
-        android:layout_marginBottom="4dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="14dp">
 
-    <TextView
-        android:id="@+id/tvCameraVarf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#37474F"
-        android:layout_marginBottom="12dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vreme: "
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#546E7A" />
 
-    <!-- Mini bar chart -->
-    <com.example.proiect.StatisticiView
-        android:id="@+id/graficMiniCamera"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="#F5F5F5"
-        android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/tvVreme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Se incarca..."
+            android:textSize="13sp"
+            android:textColor="#37474F" />
+    </LinearLayout>
 
     <!-- Action buttons -->
     <LinearLayout

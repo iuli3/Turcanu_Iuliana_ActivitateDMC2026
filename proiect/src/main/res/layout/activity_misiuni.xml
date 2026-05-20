@@ -15,14 +15,44 @@
         android:padding="16dp"
         android:background="@android:color/white" />
 
-    <Button
-        android:id="@+id/btnAdaugaMisiune"
+    <Spinner
+        android:id="@+id/spinnerFiltru"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+ Adauga Misiune"
-        android:backgroundTint="#1976D2"
-        android:textColor="@android:color/white"
-        android:layout_margin="16dp" />
+        android:background="@android:color/white"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp">
+
+        <Button
+            android:id="@+id/btnAdaugaMisiune"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+ Adauga"
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnCalendarMisiuni"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Calendar"
+            android:backgroundTint="#388E3C"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

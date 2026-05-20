@@ -68,6 +68,11 @@ public class StatisticiView extends View {
 
         canvas.drawText(titlu, width / 2f, 55, paintTitlu);
 
+        float labelSize = Math.min(28f, 130f / n);
+        float valueSize = Math.min(30f, 140f / n);
+        paintLabel.setTextSize(labelSize);
+        paintValoare.setTextSize(valueSize);
+
         int i = 0;
         for (Map.Entry<String, Integer> entry : date.entrySet()) {
             paintBar.setColor(culori[i % culori.length]);
@@ -82,7 +87,7 @@ public class StatisticiView extends View {
 
             canvas.drawRect(left, top, right, bottom, paintBar);
             canvas.drawText(String.valueOf(entry.getValue()), cx, top - 8, paintValoare);
-            canvas.drawText(entry.getKey(), cx, height - paddingBottom + 45, paintLabel);
+            canvas.drawText(entry.getKey(), cx, height - paddingBottom + labelSize + 10, paintLabel);
 
             i++;
         }

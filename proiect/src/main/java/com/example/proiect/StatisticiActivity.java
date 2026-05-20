@@ -17,37 +17,57 @@ public class StatisticiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_statistici);
 
         DatabaseHelper db = new DatabaseHelper(this);
+
+        // ── Misiuni ──────────────────────────────────────────────────────────
         List<Misiune> misiuni = db.getToateMisiunile();
-
-        int totalMisiuni = misiuni.size();
-        int active = 0;
-        int inactive = 0;
+        int misiuniTotal = misiuni.size();
+        int misiuniActive = 0, misiuniInactive = 0;
         Map<String, Integer> perZona = new LinkedHashMap<>();
-
         for (Misiune m : misiuni) {
-            if (m.activ) active++; else inactive++;
+            if (m.activ) misiuniActive++; else misiuniInactive++;
             String zona = (m.tipZona != null && !m.tipZona.isEmpty()) ? m.tipZona : "Altele";
             String label = zona.length() > 9 ? zona.substring(0, 7) + ".." : zona;
             perZona.put(label, perZona.containsKey(label) ? perZona.get(label) + 1 : 1);
         }
 
-        // Demo data when DB is empty, so the chart is never blank
-        if (perZona.isEmpty()) {
-            perZona.put("Piata", 3);
-            perZona.put("Industr.", 5);
-            perZona.put("Rezid.", 2);
-            perZona.put("Intrsc.", 4);
+        // ── Camere ───────────────────────────────────────────────────────────
+        List<CameraInfo> camereStd = CameraInfo.getCamere();
+        List<CameraInfo> camereCustom = db.getCamereCustom();
+        int camereTotal = camereStd.size() + camereCustom.size();
+        int camereActive = 0;
+        for (CameraInfo c : camereStd) if (c.active) camereActive++;
+        for (CameraInfo c : camereCustom) if (c.active) camereActive++;
+
+        // ── Alerte ───────────────────────────────────────────────────────────
+        List<Detectie> detectii = db.getToateDetectiile();
+        int alerteTotal = 0, alerteActive = 0;
+        Map<String, Integer> perCamera = new LinkedHashMap<>();
+        for (Detectie d : detectii) {
+            if (d.alerta) {
+                alerteTotal++;
+                if (d.activ) alerteActive++;
+                String cam = (d.camera != null && !d.camera.isEmpty()) ? d.camera : "?";
+                perCamera.put(cam, perCamera.containsKey(cam) ? perCamera.get(cam) + 1 : 1);
+            }
         }
 
-        TextView tvTotal = findViewById(R.id.tvTotalDetectii);
-        TextView tvActive = findViewById(R.id.tvTotalPersoane);
-        TextView tvInactive = findViewById(R.id.tvTotalAlerte);
-        StatisticiView grafic = findViewById(R.id.graficDetectii);
+        // ── Populare views ───────────────────────────────────────────────────
+        ((TextView) findViewById(R.id.tvMisiuniTotal)).setText("Total: " + misiuniTotal);
+        ((TextView) findViewById(R.id.tvMisiuniActive)).setText("Active: " + misiuniActive);
+        ((TextView) findViewById(R.id.tvMisiuniInactive)).setText("Inactive: " + misiuniInactive);
 
-        tvTotal.setText("Total misiuni: " + totalMisiuni);
-        tvActive.setText("Misiuni active: " + active);
-        tvInactive.setText("Misiuni inactive: " + inactive);
-        grafic.setTitlu("Misiuni pe tip zona");
-        grafic.setDate(perZona);
+        ((TextView) findViewById(R.id.tvCamereTotal)).setText("Total: " + camereTotal);
+        ((TextView) findViewById(R.id.tvCamereActive)).setText("Active (live): " + camereActive);
+
+        ((TextView) findViewById(R.id.tvAlerteTotal)).setText("Total evenimente: " + alerteTotal);
+        ((TextView) findViewById(R.id.tvAlerteActive)).setText("Alerte active: " + alerteActive);
+
+        StatisticiView graficZone = findViewById(R.id.graficZone);
+        graficZone.setTitlu("Misiuni pe tip zona");
+        if (!perZona.isEmpty()) graficZone.setDate(perZona);
+
+        StatisticiView graficAlerte = findViewById(R.id.graficAlerte);
+        graficAlerte.setTitlu("Alerte pe camera");
+        if (!perCamera.isEmpty()) graficAlerte.setDate(perCamera);
     }
 }
